@@ -1,3 +1,3 @@
 <map id="UARTSend4Bytes" name="UARTSend4Bytes">
-<area shape="rect" id="node3" href="$process_8c.html#a7ed11347fbcbfe6cacb8019d4797ca82" title="This function can be used to easily handle the transmission on the UART of one byte. It is meant for the application of flow control. " alt="" coords="182,5,295,32"/>
+<area shape="rect" id="node2" href="$process_8c.html#a7ed11347fbcbfe6cacb8019d4797ca82" title="This function can be used to easily handle the transmission on the UART of one byte. It is meant for the application of flow control. " alt="" coords="183,5,298,31"/>
 </map>

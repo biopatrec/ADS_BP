@@ -1,6 +1,0 @@
-<map id="SendSPIFrame" name="SendSPIFrame">
-<area shape="rect" id="node3" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="189,5,317,32"/>
-<area shape="rect" id="node5" href="$main_8c.html#a9237af6f7adfd2b81439ae8542694b8b" title="Function in charge of initializing the ALC&#45;D system. " alt="" coords="215,56,292,83"/>
-<area shape="rect" id="node9" href="$_n_s1_8h.html#ab3a536899cc383ad5f1909938206bf7f" title="Function to send a stimulation command depending on the input values. " alt="" coords="165,107,341,133"/>
-<area shape="rect" id="node7" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main function. " alt="" coords="389,81,440,108"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="UARTSend4Bytes" name="UARTSend4Bytes">
-<area shape="rect" id="node3" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="181,5,309,32"/>
-<area shape="rect" id="node5" href="$main_8c.html#a74ceb5fbff5fd971c473d77538d3ea8c" title="Timer ISR for ADS1299 samples acquisition. " alt="" coords="186,56,305,83"/>
-</map>

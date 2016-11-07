@@ -1,4 +1,4 @@
 <map id="ADS1299SetDataRate" name="ADS1299SetDataRate">
-<area shape="rect" id="node3" href="$_a_d_s1299_8c.html#a6a4a4cbeddda99496ca731429ab83853" title="Routine to read a value from a ADS1299 register passing its address. " alt="" coords="205,5,336,32"/>
-<area shape="rect" id="node5" href="$_a_d_s1299_8c.html#a4a603339474bd71fe24ce3c29af754a3" title="Routine to write a value into a ADS1299 register passing its address and the value. " alt="" coords="205,56,336,83"/>
+<area shape="rect" id="node2" href="$_a_d_s1299_8c.html#a6a4a4cbeddda99496ca731429ab83853" title="Routine to read a value from a ADS1299 register passing its address. " alt="" coords="208,5,343,31"/>
+<area shape="rect" id="node3" href="$_a_d_s1299_8c.html#a4a603339474bd71fe24ce3c29af754a3" title="Routine to write a value into a ADS1299 register passing its address and the value. " alt="" coords="209,55,342,80"/>
 </map>

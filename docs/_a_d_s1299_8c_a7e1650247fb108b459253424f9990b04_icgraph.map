@@ -1,6 +1,0 @@
-<map id="ADS1299StopContinuousMode" name="ADS1299StopContinuousMode">
-<area shape="rect" id="node3" href="$_a_d_s1299_8h.html#a307cd9a9bd57448a74e7e62818934368" title="This function executes the ADS1299 power&#45;on procedure and initializes all needed config registers..." alt="" coords="273,5,367,32"/>
-<area shape="rect" id="node9" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="256,56,384,83"/>
-<area shape="rect" id="node5" href="$main_8c.html#a9237af6f7adfd2b81439ae8542694b8b" title="Function in charge of initializing the ALC&#45;D system. " alt="" coords="432,5,509,32"/>
-<area shape="rect" id="node7" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main function. " alt="" coords="557,5,608,32"/>
-</map>

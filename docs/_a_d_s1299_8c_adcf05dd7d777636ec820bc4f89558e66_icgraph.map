@@ -1,4 +1,0 @@
-<map id="Interpret24bitAsInt32" name="Interpret24bitAsInt32">
-<area shape="rect" id="node3" href="$_a_d_s1299_8h.html#ac510aa8c38d0466c01664ee40e816227" title="This function reads the 27 bytes coming from ADS1299, processes them converting from complement&#45;of&#45;tw..." alt="" coords="195,5,360,32"/>
-<area shape="rect" id="node5" href="$main_8c.html#a74ceb5fbff5fd971c473d77538d3ea8c" title="Timer ISR for ADS1299 samples acquisition. " alt="" coords="409,5,527,32"/>
-</map>

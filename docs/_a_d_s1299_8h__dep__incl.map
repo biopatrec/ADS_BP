@@ -1,6 +1,6 @@
-<map id="C:/Users/Enzo/Documents/Software/ALC_SVN/trunk/ADS_BP/ADS1299.h" name="C:/Users/Enzo/Documents/Software/ALC_SVN/trunk/ADS_BP/ADS1299.h">
-<area shape="rect" id="node3" href="$_a_d_s1299_8c.html" title="C:/Users/Enzo/Documents\l/Software/ALC_SVN/trunk\l/ADS_BP/ADS1299.c" alt="" coords="5,109,181,165"/>
-<area shape="rect" id="node5" href="$main_8c.html" title="C:/Users/Enzo/Documents\l/Software/ALC_SVN/trunk\l/ADS_BP/main.c" alt="" coords="131,213,308,269"/>
-<area shape="rect" id="node7" href="$process_8h.html" title="C:/Users/Enzo/Documents\l/Software/ALC_SVN/trunk\l/ADS_BP/process.h" alt="" coords="258,109,435,165"/>
-<area shape="rect" id="node10" href="$process_8c.html" title="C:/Users/Enzo/Documents\l/Software/ALC_SVN/trunk\l/ADS_BP/process.c" alt="" coords="333,213,509,269"/>
+<map id="ADS1299.h" name="ADS1299.h">
+<area shape="rect" id="node2" href="$_a_d_s1299_8c.html" title="ADS1299.c" alt="" coords="5,79,94,104"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="main.c" alt="" coords="101,152,161,177"/>
+<area shape="rect" id="node4" href="$process_8h.html" title="process.h" alt="" coords="169,79,248,104"/>
+<area shape="rect" id="node5" href="$process_8c.html" title="process.c" alt="" coords="185,152,264,177"/>
 </map>

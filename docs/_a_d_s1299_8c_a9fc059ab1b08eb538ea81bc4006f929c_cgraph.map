@@ -1,4 +1,4 @@
 <map id="ADS1299TestSignal" name="ADS1299TestSignal">
-<area shape="rect" id="node3" href="$_a_d_s1299_8c.html#a4a603339474bd71fe24ce3c29af754a3" title="Routine to write a value into a ADS1299 register passing its address and the value. " alt="" coords="229,5,360,32"/>
-<area shape="rect" id="node5" href="$_a_d_s1299_8c.html#a6d4b306fd1de71fca19006adb81871db" title="This function writes the ADS1299 channel config registers in way to set the output mode of the multip..." alt="" coords="193,56,397,83"/>
+<area shape="rect" id="node2" href="$_a_d_s1299_8c.html#a4a603339474bd71fe24ce3c29af754a3" title="Routine to write a value into a ADS1299 register passing its address and the value. " alt="" coords="231,5,365,31"/>
+<area shape="rect" id="node3" href="$_a_d_s1299_8c.html#a6d4b306fd1de71fca19006adb81871db" title="This function writes the ADS1299 channel config registers in way to set the output mode of the multip..." alt="" coords="193,55,403,80"/>
 </map>
