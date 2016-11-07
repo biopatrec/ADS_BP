@@ -1,0 +1,8 @@
+<map id="LSM6DS3ReadRegister" name="LSM6DS3ReadRegister">
+<area shape="rect" id="node3" href="$_l_s_m6_d_s3_8h.html#ad59baf91ad34e9cb5625f242963be5aa" title="The aim of this function is to initialize the LSM6DS3 and prepare it to acquire samples from both acc..." alt="" coords="249,5,348,32"/>
+<area shape="rect" id="node9" href="$_l_s_m6_d_s3_8h.html#acc897106b5c8728997e68235340900fa" title="This function reads the a new sample from both accelerometer and gyroscope. " alt="" coords="214,56,383,83"/>
+<area shape="rect" id="node5" href="$main_8c.html#a9237af6f7adfd2b81439ae8542694b8b" title="Function in charge of initializing the ALC&#45;D system. " alt="" coords="445,5,523,32"/>
+<area shape="rect" id="node7" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main function. " alt="" coords="584,56,635,83"/>
+<area shape="rect" id="node11" href="$process_8h.html#ab739489e9d64c1bd39efae1586cc6a35" title="It writes the dataLog structure in the SD card. " alt="" coords="442,56,526,83"/>
+<area shape="rect" id="node13" href="$process_8h.html#a35c0d0ca7581d7951e6de402e4d6c4cd" title="It writes the dataLog structure in the SD card. " alt="" coords="433,107,535,133"/>
+</map>

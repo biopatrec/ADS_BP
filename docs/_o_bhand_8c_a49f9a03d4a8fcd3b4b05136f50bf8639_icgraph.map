@@ -1,0 +1,7 @@
+<map id="OBhandSendCommand" name="OBhandSendCommand">
+<area shape="rect" id="node3" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="213,5,341,32"/>
+<area shape="rect" id="node5" href="$_o_bhand_8h.html#a2dcf7da01990234c0e076c0a7e2432d5" title="Function to switch the hand into digital mode. " alt="" coords="234,56,321,83"/>
+<area shape="rect" id="node11" href="$process_8h.html#ae75b89db461aabefee4ed13b1bf47f57" title="Given a predicted class and the level it controls the PWMs. " alt="" coords="390,107,538,133"/>
+<area shape="rect" id="node7" href="$main_8c.html#a9237af6f7adfd2b81439ae8542694b8b" title="Function in charge of initializing the ALC&#45;D system. " alt="" coords="425,56,503,83"/>
+<area shape="rect" id="node9" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main function. " alt="" coords="587,81,637,108"/>
+</map>

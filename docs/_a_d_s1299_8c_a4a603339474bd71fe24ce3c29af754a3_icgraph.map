@@ -1,0 +1,8 @@
+<map id="ADS1299WriteReg" name="ADS1299WriteReg">
+<area shape="rect" id="node3" href="$_a_d_s1299_8h.html#a307cd9a9bd57448a74e7e62818934368" title="This function executes the ADS1299 power&#45;on procedure and initializes all needed config registers..." alt="" coords="213,5,307,32"/>
+<area shape="rect" id="node9" href="$_a_d_s1299_8h.html#ac1fd166e027274ace7e9ec7883006c3b" title="This function writes the ADS1299 CONFIG1 register in way to set the output data rate. " alt="" coords="185,56,335,83"/>
+<area shape="rect" id="node13" href="$_a_d_s1299_8h.html#a9fc059ab1b08eb538ea81bc4006f929c" title="This function enables or disables the generation of a test signal built in the ADS1299. It also modifies the input multiplexer configuration shorting the input channels to the test signal. " alt="" coords="191,107,329,133"/>
+<area shape="rect" id="node5" href="$main_8c.html#a9237af6f7adfd2b81439ae8542694b8b" title="Function in charge of initializing the ALC&#45;D system. " alt="" coords="409,5,487,32"/>
+<area shape="rect" id="node7" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main function. " alt="" coords="560,5,611,32"/>
+<area shape="rect" id="node11" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="384,81,512,108"/>
+</map>

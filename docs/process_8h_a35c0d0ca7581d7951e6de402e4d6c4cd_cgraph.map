@@ -1,0 +1,5 @@
+<map id="UpdateLogOB" name="UpdateLogOB">
+<area shape="rect" id="node3" href="$_l_s_m6_d_s3_8c.html#acc897106b5c8728997e68235340900fa" title="This function reads the a new sample from both accelerometer and gyroscope. " alt="" coords="158,31,327,57"/>
+<area shape="rect" id="node5" href="$_l_s_m6_d_s3_8c.html#abf11691408235318e7d9d22548996611" title="This function can be used to access and read register from LSM6DS3. " alt="" coords="377,5,535,32"/>
+<area shape="rect" id="node7" href="$_l_s_m6_d_s3_8c.html#a69758eb31ef08af1af61b4218270fc39" title="This function translates 16 bits information (2 bytes) from complement of 2 format into an integer va..." alt="" coords="385,56,527,83"/>
+</map>

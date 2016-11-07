@@ -1,0 +1,6 @@
+<map id="Interpret16bitAsInt32" name="Interpret16bitAsInt32">
+<area shape="rect" id="node3" href="$_l_s_m6_d_s3_8h.html#acc897106b5c8728997e68235340900fa" title="This function reads the a new sample from both accelerometer and gyroscope. " alt="" coords="195,31,365,57"/>
+<area shape="rect" id="node5" href="$process_8h.html#ab739489e9d64c1bd39efae1586cc6a35" title="It writes the dataLog structure in the SD card. " alt="" coords="423,5,507,32"/>
+<area shape="rect" id="node7" href="$process_8h.html#a35c0d0ca7581d7951e6de402e4d6c4cd" title="It writes the dataLog structure in the SD card. " alt="" coords="414,56,517,83"/>
+<area shape="rect" id="node9" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="Main function. " alt="" coords="565,56,616,83"/>
+</map>

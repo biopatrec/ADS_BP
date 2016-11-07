@@ -1,0 +1,5 @@
+<map id="GetBatteryVoltage" name="GetBatteryVoltage">
+<area shape="rect" id="node3" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="184,5,312,32"/>
+<area shape="rect" id="node5" href="$process_8h.html#a4f0db7fd0c62de5e413b8739707da807" title="It writes the dataLog structure in the SD card. " alt="" coords="213,56,283,83"/>
+<area shape="rect" id="node7" href="$main_8c.html#a09916ce735c4f479701c52bfbccdd205" title="Timer ISR dedicated to save the logFile in the SD card. " alt="" coords="361,56,479,83"/>
+</map>

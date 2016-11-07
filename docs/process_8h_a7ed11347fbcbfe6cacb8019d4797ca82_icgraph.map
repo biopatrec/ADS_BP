@@ -1,0 +1,6 @@
+<map id="UARTSendByte" name="UARTSendByte">
+<area shape="rect" id="node3" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="344,5,472,32"/>
+<area shape="rect" id="node5" href="$process_8h.html#a92543037732e5216d22896e5040d27ef" title="This function can be used to easily handle the transmit on the UART of 4bytes sized variables..." alt="" coords="169,56,295,83"/>
+<area shape="rect" id="node10" href="$process_8c.html#ae3f4a2b03d0333f8250088894e2d716d" title="This function can be used to easily handle the transmit on the UART of 4bytes sized variables..." alt="" coords="169,107,295,133"/>
+<area shape="rect" id="node8" href="$main_8c.html#a74ceb5fbff5fd971c473d77538d3ea8c" title="Timer ISR for ADS1299 samples acquisition. " alt="" coords="349,56,467,83"/>
+</map>

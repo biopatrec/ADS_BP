@@ -1,0 +1,6 @@
+<map id="DeviceInit" name="DeviceInit">
+<area shape="rect" id="node3" href="$_a_d_s1299_8c.html#a307cd9a9bd57448a74e7e62818934368" title="This function executes the ADS1299 power&#45;on procedure and initializes all needed config registers..." alt="" coords="131,56,226,83"/>
+<area shape="rect" id="node5" href="$_a_d_s1299_8c.html#a7e1650247fb108b459253424f9990b04" title="Routine to stop the continuous acquisition mode. " alt="" coords="277,5,478,32"/>
+<area shape="rect" id="node7" href="$_a_d_s1299_8c.html#a4a603339474bd71fe24ce3c29af754a3" title="Routine to write a value into a ADS1299 register passing its address and the value. " alt="" coords="312,56,443,83"/>
+<area shape="rect" id="node9" href="$_a_d_s1299_8c.html#a6d4b306fd1de71fca19006adb81871db" title="This function writes the ADS1299 channel config registers in way to set the output mode of the multip..." alt="" coords="275,107,479,133"/>
+</map>

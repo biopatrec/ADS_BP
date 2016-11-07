@@ -1,0 +1,5 @@
+<map id="ADS1299ReadReg" name="ADS1299ReadReg">
+<area shape="rect" id="node3" href="$_a_d_s1299_8h.html#a807c51d43d0e75e309185946730e8113" title="Routine to read all values from ADS1299 registers. It receives a pointer to a 25 bytes chars array..." alt="" coords="187,5,333,32"/>
+<area shape="rect" id="node7" href="$_a_d_s1299_8h.html#ac1fd166e027274ace7e9ec7883006c3b" title="This function writes the ADS1299 CONFIG1 register in way to set the output data rate. " alt="" coords="185,56,335,83"/>
+<area shape="rect" id="node5" href="$main_8c.html#abbe7ff5f5d50895ac6ea55fcf9fda776" title="UART reception ISR for decoding and executing commands given by external master devices. " alt="" coords="384,31,512,57"/>
+</map>

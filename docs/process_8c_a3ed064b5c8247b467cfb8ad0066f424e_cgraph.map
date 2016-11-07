@@ -1,0 +1,4 @@
+<map id="UARTSendFeatures" name="UARTSendFeatures">
+<area shape="rect" id="node3" href="$process_8c.html#a92543037732e5216d22896e5040d27ef" title="This function can be used to easily handle the transmit on the UART of 4bytes sized variables..." alt="" coords="193,5,319,32"/>
+<area shape="rect" id="node5" href="$process_8c.html#a7ed11347fbcbfe6cacb8019d4797ca82" title="This function can be used to easily handle the transmission on the UART of one byte. It is meant for the application of flow control. " alt="" coords="369,5,482,32"/>
+</map>

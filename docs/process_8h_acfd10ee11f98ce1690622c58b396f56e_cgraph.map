@@ -1,0 +1,7 @@
+<map id="ProcessSaveNewSample" name="ProcessSaveNewSample">
+<area shape="rect" id="node3" href="$_a_d_s1299_8c.html#ac510aa8c38d0466c01664ee40e816227" title="This function reads the 27 bytes coming from ADS1299, processes them converting from complement&#45;of&#45;tw..." alt="" coords="221,5,387,32"/>
+<area shape="rect" id="node7" href="$process_8c.html#a89fdd528e5c1175d4d371e4a091cb7d3" title="It calls the routines for filtering a new sample. " alt="" coords="257,56,351,83"/>
+<area shape="rect" id="node5" href="$_a_d_s1299_8c.html#adcf05dd7d777636ec820bc4f89558e66" title="This function translates 24 bits information (3 bytes) from complement of 2 format into an integer va..." alt="" coords="435,5,576,32"/>
+<area shape="rect" id="node9" href="$process_8c.html#ab98fecc8568393580bffdcca1d7d4186" title="It filters a new sample applying a IIR notch filter in real time. " alt="" coords="458,56,553,83"/>
+<area shape="rect" id="node11" href="$process_8c.html#a31aeb2ebac36261f658d94739708e183" title="It filters a new sample applying a IIR high&#45;pass filter in real time. " alt="" coords="471,107,540,133"/>
+</map>
