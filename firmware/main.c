@@ -170,7 +170,6 @@ void COMM_IntHandler(void) {
 			nChannels = UARTCharGet(COMM_UARTPORT);
 			if(nChannels>8)
 				nChannels = 8;
-			ResetFilterArrays(nChannels);
 			TimerDisable(TIMER2_BASE, TIMER_A);
 			TimerLoadSet(TIMER2_BASE, TIMER_A, clockFreq/10);
 			TimerEnable(TIMER2_BASE, TIMER_A);
@@ -434,6 +433,8 @@ void DeviceInit(void) {
 	GPIOPinTypeGPIOOutput(ADS_NCS_PORT, ADS_NCS_PIN);
 	GPIOPinTypeGPIOInput(ADS_NDRDY_PORT, ADS_NDRDY_PIN);
 	ADS1299Init();
+	
+	ResetFilterArrays(nChannels);
 
 	// Enable processor interrupts.
 	IntMasterEnable();
