@@ -108,64 +108,62 @@ void COMM_IntHandler(void) {
 	// Decode and Execute
 	switch (received)
 	{
-		case 'A': // Test connection, it echos the received 'C' after the 'A'
+		case TEST_CONNECTION: // Test connection, it echos the received 'C' after the 'A'
 			UARTSendByte(UARTCharGet(COMM_UARTPORT));
 		break;
-		case 0xA0: // Firmware Version & Device number
-			UARTSendByte(received);
+		case FIRMWARE_VERSION_READ: // Firmware Version & Device number
+			UARTSendByte(FIRMWARE_VERSION_READ);
 			for(i=0;i<13;i++)
 				UARTSendByte(firmwareV[i]);
 			for(i=0;i<6;i++)
 				UARTSendByte(serialN[i]);
-			UARTSendByte(0xA0);
+			UARTSendByte(FIRMWARE_VERSION_READ);
 		break;
-		case 'B': // battery voltage check
-			UARTSendByte(received);
+		case BATTERY_VOLTAGE_READ: // Battery voltage check
+			UARTSendByte(BATTERY_VOLTAGE_READ);
 			tempFloatValue = 5.0f; // to fix!!!!!!!!!
 			UARTSend4Bytes((unsigned char *)&tempFloatValue);
-			UARTSendByte(received);
+			UARTSendByte(BATTERY_VOLTAGE_READ);
 		break;
-		case 'S': // Read internal Registers
-			UARTSendByte(received);
+		case ADS1299_REGS_READ: // Read ADS1299 internal Registers
+			UARTSendByte(ADS1299_REGS_READ);
 			ADS1299ReadAllReg(&reg[0]);
 			for(i=0; i<24; i++)
 				UARTSendByte(reg[i+1]);
-			UARTSendByte('S');
+			UARTSendByte(ADS1299_REGS_READ);
 		break;
-		case 'H': // Enable/Disable Filters
-			UARTSendByte(received);
+		case FILTERS_ENABLE_SET: // Enable/Disable Filters
+			UARTSendByte(FILTERS_ENABLE_SET);
 			received = UARTCharGet(COMM_UARTPORT);
 			filterEnable = received;
-			UARTSendByte('H');
+			UARTSendByte(FILTERS_ENABLE_SET);
 		break;
-		case 'K': // Set Gain
-			UARTSendByte(received);
+		case ADS1299_GAIN_SET: // Set ADS1299 Gain
+			UARTSendByte(ADS1299_GAIN_SET);
 			received = UARTCharGet(COMM_UARTPORT);
 			ADS1299SetInputModeSetGain(0x00,received);
-			UARTSendByte('K');
+			UARTSendByte(ADS1299_GAIN_SET);
 		break;
-		case 'F': // Set the output data rate of ADS1299
-			UARTSendByte(received);
+		case ADS1299_DATARATE_SET: // Set ADS1299 output data rate
+			UARTSendByte(ADS1299_DATARATE_SET);
 			received = UARTCharGet(COMM_UARTPORT);
 			ADS1299SetDataRate(received);
-			UARTSendByte('F');
+			UARTSendByte(ADS1299_DATARATE_SET);
 		break;
-		case 'r': // Set the sampling frequency
-			UARTSendByte(received);
-            uint32_t sFTmp;
-			UARTReceive4Bytes(&sFTmp);
-			sF = sFTmp;
+		case SAMPLING_FREQ_SET: // Set the sampling frequency
+			UARTSendByte(SAMPLING_FREQ_SET);
+			UARTReceive4Bytes(&sF);
 			if(sF!=500 && sF!=1000 && sF!= 2000)
 				sF = 1000;
-			UARTSendByte('r');
+			UARTSendByte(SAMPLING_FREQ_SET);
 		break;
-		case 'P': // Set internal test signal
-			UARTSendByte(received);
+		case TEST_SIGNAL_ENABLE_SET: // Enable ADS1299 internal test signal
+			UARTSendByte(TEST_SIGNAL_ENABLE_SET);
 			received = UARTCharGet(COMM_UARTPORT);
 			ADS1299TestSignal(received);
-			UARTSendByte('P');
+			UARTSendByte(TEST_SIGNAL_ENABLE_SET);
 		break;
-		case 'G': // Start EMG continuous acquisition
+		case START_RAW_ACQ: // Start EMG continuous acquisition
 			alcdState = ACQUIRE_EMG;
 			nChannels = UARTCharGet(COMM_UARTPORT);
 			if(nChannels>8)
@@ -177,9 +175,9 @@ void COMM_IntHandler(void) {
 			TimerDisable(TIMER0_BASE, TIMER_A);
 			TimerLoadSet(TIMER0_BASE, TIMER_A, clockFreq/sF);
 			TimerEnable(TIMER0_BASE, TIMER_A);
-			UARTSendByte(received);
+			UARTSendByte(START_RAW_ACQ);
 		break;
-		case 'T': // Stop EMG continuous acquisition
+		case STOP_ACQ: // Stop EMG continuous acquisition
 			alcdState = IDLE;
 			TimerDisable(TIMER0_BASE, TIMER_A);
 			TimerDisable(TIMER2_BASE, TIMER_A);
@@ -187,6 +185,7 @@ void COMM_IntHandler(void) {
 			TimerEnable(TIMER2_BASE, TIMER_A);
 			ADS1299StopContinuousMode();
 			TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+			UARTSendByte(STOP_ACQ);
 		break;
 	}
 
@@ -323,7 +322,7 @@ int main(void) {
 
 			// EMG SIGNAL ACQUISITION: ACQUIRE EMG AND SEND OUT
 			case ACQUIRE_EMG:
-				// GPIOc ISR
+				// Timer0 ISR
 			break;
 
 			default:
@@ -390,7 +389,7 @@ void DeviceInit(void) {
 	SysCtlPeripheralEnable(ADS_SSI_PHERIPH);		// SPI for ADS1299
 	GPIOPinConfigure(ADS_SSISCLK_PIN);
 	GPIOPinConfigure(ADS_SSIRX_PIN);
-    GPIOPinConfigure(ADS_SSITX_PIN);
+    	GPIOPinConfigure(ADS_SSITX_PIN);
 	//GPIOPinTypeSSI(ADS_SSI_PORT, ADS_SSISCLK_PIN | ADS_SSIRX_PIN | ADS_SSITX_PIN);
 	GPIOPinTypeSSI(GPIO_PORTA_BASE, GPIO_PIN_4 | GPIO_PIN_2 | GPIO_PIN_5);
 	SSIConfigSetExpClk(ADS_SSI_BASE, clockFreq, SSI_FRF_MOTO_MODE_1, SSI_MODE_MASTER, 18000000, 8);
