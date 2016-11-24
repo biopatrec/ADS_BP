@@ -33,26 +33,26 @@
 
 
 /* defines */
-#define COMM_UARTPORT			UART1_BASE
-#define COMM_UARTINT			INT_UART1
+// Commands definition for communication protocol
+#define TEST_CONNECTION			   'A'
+#define FIRMWARE_VERSION_READ	 0xA0
+#define BATTERY_VOLTAGE_READ	 'B'
+#define ADS1299_REGS_READ		   'S'
+#define FILTERS_ENABLE_SET		 'H'
+#define ADS1299_GAIN_SET		   'K'
+#define ADS1299_DATARATE_SET	 'F'
+#define SAMPLING_FREQ_SET		   'r'
+#define TEST_SIGNAL_ENABLE_SET 'P'
+#define START_RAW_ACQ			     'G'
+#define STOP_ACQ				       'T'
+
+#define COMM_UARTPORT			      UART1_BASE
+#define COMM_UARTINT			      INT_UART1
 
 // BT module
-#define WT12_NOTPRESENT    0x00
-#define WT12_PRESENT       0x01
-#define WT12_CONNECTED     0x02
-
-// Battery analog pins
-#define AN_INPUT				ADC_CTL_CH0
-#define R1_DIVIDER	      		10000 	// R29
-#define R2_DIVIDER		  		4750 	// ALC-D1.0 R32, ALC-D1.1 R30
-#define K_DIVIDER		  		(R1_DIVIDER+R2_DIVIDER)/R2_DIVIDER
-#define AN_INPUT_NTC			ADC_CTL_CH5
-#define R_DIVIDER_NTC     		5600 	// LatchPB5 R8
-#define R_PARALLEL_NTC     		10000 	// LatchPB5 R7
-#define NTC_25_RESISTANCE  		10000
-#define NTC_B_PARAMETER			3435
-#define NTC_T0_PARAMETER		25
-#define NTC_R_PARAMETER			(NTC_25_RESISTANCE*exp(-NTC_B_PARAMETER/NTC_T0_PARAMETER)))
+#define WT12_NOTPRESENT         0x00
+#define WT12_PRESENT            0x01
+#define WT12_CONNECTED          0x02
 
 /* structures */
 
