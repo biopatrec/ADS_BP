@@ -12,8 +12,8 @@
  * </pre>
  */
 
-#ifndef ALCD_PROCESS_H_
-#define ALCD_PROCESS_H_
+#ifndef PROCESS_H_
+#define PROCESS_H_
 
 
 /* libraries */
@@ -33,21 +33,20 @@
 
 
 /* defines */
-// Commands definition for communication protocol
-#define TEST_CONNECTION			   'A'
-#define FIRMWARE_VERSION_READ	 0xA0
-#define BATTERY_VOLTAGE_READ	 'B'
-#define ADS1299_REGS_READ		   'S'
+// Commands' opcode definition for communication protocol
+#define TEST_CONNECTION			 'A'
+#define DEVNAME_FIRMWAREV_READ	 0xA0
+#define ADS1299_REGS_READ		 'S'
 #define FILTERS_ENABLE_SET		 'H'
-#define ADS1299_GAIN_SET		   'K'
+#define ADS1299_GAIN_SET		 'K'
 #define ADS1299_DATARATE_SET	 'F'
-#define SAMPLING_FREQ_SET		   'r'
-#define TEST_SIGNAL_ENABLE_SET 'P'
-#define START_RAW_ACQ			     'G'
-#define STOP_ACQ				       'T'
+#define SAMPLING_FREQ_SET		 'r'
+#define TEST_SIGNAL_ENABLE_SET   'P'
+#define START_ACQ			 	 'G'
+#define STOP_ACQ				 'T'
 
-#define COMM_UARTPORT			      UART1_BASE
-#define COMM_UARTINT			      INT_UART1
+#define COMM_UARTPORT			  UART1_BASE
+#define COMM_UARTINT			  INT_UART1
 
 // BT module
 #define WT12_NOTPRESENT         0x00
@@ -68,5 +67,5 @@ void UARTSendByte(unsigned char byte);
 /* global variables */
 
 
-#endif /* ALCD_PROCESS_H_ */
+#endif /* PROCESS_H_ */
 

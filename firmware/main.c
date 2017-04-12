@@ -52,6 +52,10 @@
 // Finite State Machine
 #define IDLE			  		 0
 #define ACQUIRE_EMG      	     1
+// LEDs
+#define STATUS_LED_READ GPIOPinRead(GPIO_PORTF_BASE, GPIO_PIN_1)
+#define STATUS_LED_OFF GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1)
+#define STATUS_LED_ON GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0)
 
 
 /* structures */
@@ -62,12 +66,14 @@ void DeviceInit(void);
 
 
 /* global variables */
-unsigned char firmwareV[13] = {'1','.','5','-','1','1','/','1','0','/','1','6','~'};
-unsigned char serialN[6] = {'A','D','S','B','P','~'};
+unsigned char firmwareV[13] = {'0','.','0','-','1','2','/','0','4','/','1','7','~'};
+unsigned char deviceName[7] = {'A','D','S','-','B','P','~'};
 uint32_t clockFreq = 0;
 volatile unsigned char alcdState = IDLE;
-volatile unsigned char timer;
+volatile unsigned char timer = false;
 volatile uint32_t sF = 1000;
+volatile char message[100];
+volatile unsigned char btStatus = WT12_NOTPRESENT;
 
 extern volatile unsigned char nChannels;
 extern volatile unsigned char filterEnable;
@@ -92,16 +98,11 @@ int32_t	priorityTMR2 = 100;
  */
 void COMM_IntHandler(void) {
 
-    unsigned long ulStatus, i;
-    uint32_t received = 0;
+    uint32_t i, received = 0;
 	unsigned char reg[25];
-	float32_t tempFloatValue;
-
-	// Get the interrupt status.
-	ulStatus = UARTIntStatus(COMM_UARTPORT, true);
 
 	// Clear the asserted interrupts.
-	UARTIntClear(COMM_UARTPORT, ulStatus);
+	UARTIntClear(COMM_UARTPORT, UART_INT_RX | UART_INT_RT);
 
     received = UARTCharGet(COMM_UARTPORT);
 
@@ -111,19 +112,13 @@ void COMM_IntHandler(void) {
 		case TEST_CONNECTION: // Test connection, it echos the received 'C' after the 'A'
 			UARTSendByte(UARTCharGet(COMM_UARTPORT));
 		break;
-		case FIRMWARE_VERSION_READ: // Firmware Version & Device number
-			UARTSendByte(FIRMWARE_VERSION_READ);
-			for(i=0;i<13;i++)
+		case DEVNAME_FIRMWAREV_READ: // Firmware Version & Device number
+			UARTSendByte(DEVNAME_FIRMWAREV_READ);
+			for(i=0;i<sizeof(deviceName);i++)
+				UARTSendByte(deviceName[i]);
+			for(i=0;i<sizeof(firmwareV);i++)
 				UARTSendByte(firmwareV[i]);
-			for(i=0;i<6;i++)
-				UARTSendByte(serialN[i]);
-			UARTSendByte(FIRMWARE_VERSION_READ);
-		break;
-		case BATTERY_VOLTAGE_READ: // Battery voltage check
-			UARTSendByte(BATTERY_VOLTAGE_READ);
-			tempFloatValue = 5.0f; // to fix!!!!!!!!!
-			UARTSend4Bytes((unsigned char *)&tempFloatValue);
-			UARTSendByte(BATTERY_VOLTAGE_READ);
+			UARTSendByte(DEVNAME_FIRMWAREV_READ);
 		break;
 		case ADS1299_REGS_READ: // Read ADS1299 internal Registers
 			UARTSendByte(ADS1299_REGS_READ);
@@ -152,7 +147,7 @@ void COMM_IntHandler(void) {
 		break;
 		case SAMPLING_FREQ_SET: // Set the sampling frequency
 			UARTSendByte(SAMPLING_FREQ_SET);
-			UARTReceive4Bytes(&sF);
+			UARTReceive4Bytes((uint32_t *)&sF);
 			if(sF!=500 && sF!=1000 && sF!= 2000)
 				sF = 1000;
 			UARTSendByte(SAMPLING_FREQ_SET);
@@ -163,7 +158,7 @@ void COMM_IntHandler(void) {
 			ADS1299TestSignal(received);
 			UARTSendByte(TEST_SIGNAL_ENABLE_SET);
 		break;
-		case START_RAW_ACQ: // Start EMG continuous acquisition
+		case START_ACQ: // Start EMG continuous acquisition
 			alcdState = ACQUIRE_EMG;
 			nChannels = UARTCharGet(COMM_UARTPORT);
 			if(nChannels>8)
@@ -175,7 +170,7 @@ void COMM_IntHandler(void) {
 			TimerDisable(TIMER0_BASE, TIMER_A);
 			TimerLoadSet(TIMER0_BASE, TIMER_A, clockFreq/sF);
 			TimerEnable(TIMER0_BASE, TIMER_A);
-			UARTSendByte(START_RAW_ACQ);
+			UARTSendByte(START_ACQ);
 		break;
 		case STOP_ACQ: // Stop EMG continuous acquisition
 			alcdState = IDLE;
@@ -186,6 +181,35 @@ void COMM_IntHandler(void) {
 			ADS1299StopContinuousMode();
 			TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 			UARTSendByte(STOP_ACQ);
+		break;
+		default:
+			/* This case is actually useful to handle any unneeded message sent from the WT12 bluetooth module:
+			 * "WRAP THOR ..." message sent just after power on or reset
+			 * "NO CARRIER 0 ERROR" message sent when it is not connected to master
+			 * "RING 0 MACaddress" message sent when it is connected
+			 */
+			timer = false;
+			message[0] = received;
+			i = 1;
+			TimerEnable(TIMER3_BASE, TIMER_A);
+			do {
+				if(UARTCharsAvail(COMM_UARTPORT)) {
+					message[i] = UARTCharGet(COMM_UARTPORT);
+					i++;
+				}
+			} while(!timer);
+			TimerDisable(TIMER3_BASE, TIMER_A);
+			if(!strncmp((const char*)&message[0], "WRAP", 4)) {
+				btStatus = WT12_PRESENT;
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_4, 0);
+			}
+			if(!strncmp((const char*)&message[0], "NO CARRIER", 10)) {
+				btStatus = WT12_PRESENT;
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_4, GPIO_PIN_4);
+			}
+			if(!strncmp((const char*)&message[0], "RING", 4)) {
+				btStatus = WT12_CONNECTED;
+			}
 		break;
 	}
 
@@ -245,6 +269,7 @@ void Timer0IntHandler(void)
 			default:
 			break;
 		}
+
 		// Clear the timer interrupt.
 		TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 	}
@@ -257,21 +282,17 @@ void Timer0IntHandler(void)
  * @return none.
  *
  * In the common setup LEDs are driven in this way:
- * - LED1 (usually green) blinks at 2 Hz in stand-by, communication and control mode
- * - LED1 blinks at 10 Hz during EMG or features recording
- * - LED2 (usually blue):
- *  + is off when Bluetooth module not found
- *  + blinks at 2 Hz when the Bluetooth module is present but not connected
- *  + is on when the Bluetooth module is connected
+ * - LED1 (red) blinks at 2 Hz in stand-by
+ * - LED1 blinks at 10 Hz during EMG acquisition
  */
 void Timer2IntHandler(void)
 {
 
 	/* Red LED blink to show acquisition or idle state */
-	if(GPIOPinRead(GPIO_PORTF_BASE,GPIO_PIN_1))
-		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0);
+	if(!STATUS_LED_READ)
+		STATUS_LED_OFF;
 	else
-		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1);
+		STATUS_LED_ON;
 
     // Clear the timer interrupt.
     TimerIntClear(TIMER2_BASE, TIMER_TIMA_TIMEOUT);
@@ -369,8 +390,8 @@ void DeviceInit(void) {
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
 
 	/* =================LED Initialization======================= */
-	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3);
-	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3, 0);
+	GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);
+	STATUS_LED_OFF;
 
 	//* =================UART3 Initialization======================= */
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_UART1);
